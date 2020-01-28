@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -15,7 +16,7 @@ import {
   Text,
   StatusBar,
   Button,
-  Alert
+  Alert,
 } from 'react-native';
 
 import {
@@ -32,22 +33,21 @@ import HomeView from './src/components/Home/HomeView';
 const App = _ => {
   const [initial, useinitial] = useState(1);
   const st = () => {
-    useinitial(initial + 1)
-  }
+    useinitial(initial + 1);
+  };
 
   const t = () => {
-    useinitial(initial - 1)
-  }
+    useinitial(initial - 1);
+  };
   function Separator() {
     return <View style={styles.separator} />;
-  } 
+  }
 
   return (
-     <SafeAreaView style={{flex:1}}>
-    <HomeView />
+    // eslint-disable-next-line react-native/no-inline-styles
+    <SafeAreaView style={{flex:1}}>
+      <HomeView />
     </SafeAreaView>
-
-
   );
 };
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   mar: {
-    margin: 10
+    margin: 10,
   },
   scrollView: {
     backgroundColor: Colors.lighter,
