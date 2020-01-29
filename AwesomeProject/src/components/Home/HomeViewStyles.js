@@ -11,8 +11,8 @@ const HomeViewStyles = StyleSheet.create({
         color:'#000'
     },
     mainActionButton:{
-        width:284,
-        height:284,
+        width:234,
+        height:234,
         alignItems: 'center',
         justifyContent:'center',
         backgroundColor:'#00CD5E',

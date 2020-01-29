@@ -1,46 +1,56 @@
-import React,{useState} from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import HomeViewStyles from './HomeViewStyles';
 import i18n from '../../i18n/i18n';
 
 const HomeView = () => {
 
-    const [time,setTime] = useState(0);
+  const [countInterval, setCountInterval] = useState(0);
+  const [started, setStarted] = useState(false);
 
-    const startTime  = ()=>{
-        setInterval(() => {
-            setTime(time + 1000)
-        },1000);
+
+  useEffect(() => {
+    let intervalID;
+    if (started) {
+      intervalID = setInterval(() => {
+        setCountInterval(prevTime => prevTime + 1000);     
+      }, 1000);
     }
+    return () => clearInterval(intervalID);
+  }, [started, countInterval]);
+
+  const timeStop = () => {
+    console.log('st',started)
+    setStarted(!started)
+   
+  }
 
 
+  const RenderRunningTimer = () => {
+    return (
+      <TouchableOpacity style={HomeViewStyles.mainActionButton} onPress={timeStop}>
+        <Text style={HomeViewStyles.mainActionButtonText}>{countInterval}</Text>
+      </TouchableOpacity>
+    );
+  }
 
-    const RenderRunningTimer = ()=>{
-        return(
-            <TouchableOpacity style={HomeViewStyles.mainActionButton} onPress={startTime}>
-                <Text style={HomeViewStyles.mainActionButtonText}>00:00:00</Text>
-            </TouchableOpacity>
-        );
-    }
-
-    const RenderStart = ()=>{
-        return(
-            <TouchableOpacity style={HomeViewStyles.mainActionButton} onPress={startTime}>
-            <Text style={HomeViewStyles.mainActionButtonText}>{i18n.HOME.START}</Text>
-        </TouchableOpacity>
-        );
-    }
+  const RenderStart = () => {
+    return (
+      <TouchableOpacity style={HomeViewStyles.mainActionButton} onPress={() => setStarted(true)}>
+        <Text style={HomeViewStyles.mainActionButtonText}>{i18n.HOME.START}</Text>
+      </TouchableOpacity>
+    );
+  }
 
   return (
-    <View style={{flex: 1},HomeViewStyles.HomeViewContainer}>
-      <View stye={{flex: 1}}>
+    <View style={{ flex: 1 }, HomeViewStyles.HomeViewContainer}>
+      <View stye={{ flex: 1 }}>
         <Text style={HomeViewStyles.WelcomeHeader}>{i18n.HOME.WELCOME_HEADER}</Text>
       </View>
-      <View style={{flex: 2}}>
-         <Text> {time}</Text>
-        {RenderStart()}
-        {RenderRunningTimer()}
+      <View style={{ flex: 2 }}>
+        {countInterval > 0 ? RenderRunningTimer(): RenderStart()}
       </View>
+
     </View>
   );
 };
