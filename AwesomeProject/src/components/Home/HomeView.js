@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import HomeViewStyles from './HomeViewStyles';
 import i18n from '../../i18n/i18n';
+import moment from 'moment'
 
 const HomeView = () => {
 
@@ -29,7 +30,9 @@ const HomeView = () => {
   const RenderRunningTimer = () => {
     return (
       <TouchableOpacity style={HomeViewStyles.mainActionButton} onPress={timeStop}>
-        <Text style={HomeViewStyles.mainActionButtonText}>{countInterval}</Text>
+        <Text style={HomeViewStyles.mainActionButtonText}>
+          {moment.utc(countInterval).format('HH:mm:ss')}
+          </Text>
       </TouchableOpacity>
     );
   }
