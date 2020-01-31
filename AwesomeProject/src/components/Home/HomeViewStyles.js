@@ -25,6 +25,8 @@ const HomeViewStyles = StyleSheet.create({
     },
     mainActionButtonPauseText:{
         fontSize:24,
+        color:'#FFF',
+        fontWeight:'bold',
         
     }
 
