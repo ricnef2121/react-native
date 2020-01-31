@@ -33,6 +33,7 @@ const HomeView = () => {
         <Text style={HomeViewStyles.mainActionButtonText}>
           {moment.utc(countInterval).format('HH:mm:ss')}
           </Text>
+          <Text style ={HomeViewStyles.mainActionButtonPauseText}>Pause</Text>
       </TouchableOpacity>
     );
   }
