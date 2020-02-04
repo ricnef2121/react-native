@@ -26,10 +26,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-//components
 import HomeView from './src/components/Home/HomeView';
-//const App: () => React$Node = () => {
-// const [initial,useinitial] = useState('');
+
 const App = _ => {
   const [initial, useinitial] = useState(1);
   const st = () => {
