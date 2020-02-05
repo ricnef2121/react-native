@@ -1,25 +1,25 @@
 import React from 'react';
 import i18n from '../../i18n/i18n';
 import moment from 'moment'
-import HomeViewStyles from '../Home/HomeViewStyles'
+import StopWatchButtonStyles from './StopWatchButtonStyles'
 
 import { Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 
 const StopWatchButton = ({ time,timeStartOrStop }) => {
   if (time > 0) {
     return (
-      <TouchableOpacity style={HomeViewStyles.mainActionButton}
+      <TouchableOpacity style={StopWatchButtonStyles.mainActionButton}
       onPress={timeStartOrStop}>
-        <Text style={HomeViewStyles.mainActionButtonText}>
+        <Text style={StopWatchButtonStyles.mainActionButtonText}>
           {moment.utc(time).format('HH:mm:ss')}
         </Text>
-        <Text style={HomeViewStyles.mainActionButtonPauseText}>{i18n.HOME.PAUSE}</Text>
+        <Text style={StopWatchButtonStyles.mainActionButtonPauseText}>{i18n.STOP_WATCH.PAUSE}</Text>
       </TouchableOpacity>
     );
   }
   return (
-    <TouchableOpacity style={HomeViewStyles.mainActionButton} onPress={timeStartOrStop}>
-      <Text style={HomeViewStyles.mainActionButtonText}>{i18n.HOME.START}</Text>
+    <TouchableOpacity style={StopWatchButtonStyles.mainActionButton} onPress={timeStartOrStop}>
+      <Text style={StopWatchButtonStyles.mainActionButtonText}>{i18n.STOP_WATCH.START}</Text>
     </TouchableOpacity>
   );
 }
