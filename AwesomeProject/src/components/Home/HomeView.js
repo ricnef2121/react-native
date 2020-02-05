@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, ImageBackground, AppState } from 'react-native';
+import { Text, View, AppState } from 'react-native';
 import HomeViewStyles from './HomeViewStyles';
 import i18n from '../../i18n/i18n';
 import StopWatchButton from '../StopWatchButton/StopWatchButton'
